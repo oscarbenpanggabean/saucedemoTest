@@ -10,12 +10,15 @@ Feature: Cart
     Then Textbox "Username" is filled by "standard_user"
     When user fill "secret_sauce" in "Password" Textbox
     Then Textbox "Password" is filled by "secret_sauce"
-    And user click on "Login" Button
-    Then user is navigated to "Dashboard" page
+    When user click on LOGIN Button
+    Then user is navigated to "Products" page
 
-  @Test-1 @Positive @RUN
+  @Test-1
   Scenario: Test-1 User add 1 item to cart
     When user click Button "Add to cart" on product "Sauce Labs Backpack"
-    Then on product "Sauce Labs Backpack" Button "Add to cart" is "disappear"
-    And on product "Sauce Labs Backpack" Button "Remove" is "appear"
-    
+    Then on product "Sauce Labs Backpack" Button "Remove" is "appear"
+    And on product "Sauce Labs Backpack" Button "Add to cart" is "disappear"
+    And ICON CART BADGE is filled by number 1
+    When user click on ICON CART
+    Then user is navigated to "Your Cart" page
+    Then validate product "Sauce Labs Backpack" is "exists"
