@@ -7,6 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
@@ -27,6 +28,11 @@ public class Hooks {
         System.out.println("open the browser...");
         driver = driverFactory.init(scenario);
         driver.get(configuration.URL);
+    }
+
+    @AfterStep
+    public void delay() throws InterruptedException{
+        Thread.sleep(0);
     }
 
     @After(order = 1)
